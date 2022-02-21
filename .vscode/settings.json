@@ -1,0 +1,25 @@
+{
+  "cmake.configureSettings": {
+    "PYTHON_EXECUTABLE": "/Users/dboyliao/.pyenv/versions/3.8.1/bin/python3"
+  },
+  "cmake.configureOnEdit": false,
+  "cmake.configureOnOpen": false,
+  "files.associations": {
+    "*.vue": "vue",
+    ".bash_functions": "shellscript",
+    "Makefile-docker": "makefile",
+    "__tuple": "cpp",
+    "array": "cpp",
+    "vector": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "__config": "cpp",
+    "chrono": "cpp",
+    "ios": "cpp",
+    "typeindex": "cpp",
+    "variant": "cpp",
+    "type_traits": "cpp",
+    "iostream": "cpp",
+    "functional": "cpp"
+  }
+}

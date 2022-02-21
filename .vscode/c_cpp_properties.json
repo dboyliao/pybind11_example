@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "name": "Mac",
+      "includePath": [
+        "${workspaceFolder}/thirdparty/pybind11/include",
+        "${workspaceFolder}/include",
+        "/usr/local/include/opencv4/",
+        "${default}"
+      ],
+      "defines": [],
+      "macFrameworkPath": [],
+      "compilerPath": "/usr/local/bin/gcc-11",
+      "cStandard": "gnu17",
+      "cppStandard": "gnu++11",
+      "intelliSenseMode": "macos-gcc-x64",
+      "configurationProvider": "ms-vscode.cmake-tools"
+    }
+  ],
+  "version": 4
+}

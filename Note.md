@@ -1,0 +1,4 @@
+- https://pybind11.readthedocs.io/en/stable/advanced/pycpp/numpy.html
+- https://www.twblogs.net/a/5c80cf05bd9eee35fc136002
+- https://github.com/edmBernard/pybind11_opencv_numpy
+- https://www.youtube.com/watch?v=_5T70cAXDJ0&ab_channel=JackofSome
