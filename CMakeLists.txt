@@ -25,5 +25,5 @@ pybind11_add_module(
 target_include_directories(pybind11_numpy PUBLIC include)
 target_link_libraries(pybind11_numpy PRIVATE ${OpenCV_LIBS})
 set_target_properties(pybind11_numpy
-  PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/lib"
+  PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/pybind11_example"
 )

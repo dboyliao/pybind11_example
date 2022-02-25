@@ -1,28 +1,13 @@
 #include "numpy_opencv.hpp"
 
-#include <chrono>
 #include <iostream>
 #include <string>
-#include <thread>
 
 #include "opencv2/core.hpp"
 #include "opencv2/imgcodecs.hpp"
 #include "pybind11/numpy.h"
 
-void thread_kernel_gil_released() {
-  py::gil_scoped_release release;
-  std::cout << "starting: " << std::this_thread::get_id() << std::endl;
-  std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-  std::cout << "ended" << std::endl;
-}
-
-void thread_kernel_with_gil() {
-  std::cout << "starting: " << std::this_thread::get_id() << std::endl;
-  std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-  std::cout << "ended" << std::endl;
-}
-
-std::string get_format_descriptor(int cv_dtype) {
+static std::string get_format_descriptor(int cv_dtype) {
   // https://docs.opencv.org/4.5.4/d1/d1b/group__core__hal__interface.html
   std::string ret_str;
   switch (cv_dtype) {
@@ -78,7 +63,7 @@ std::string get_format_descriptor(int cv_dtype) {
   return ret_str;
 }
 
-py::array convert_to_array(const cv::Mat &cv_mat) {
+static py::array convert_to_array(const cv::Mat &cv_mat) {
   // 1. copy the data from given Mat
   size_t data_size = cv_mat.total() * cv_mat.elemSize();
   uchar *data = new uchar[data_size];
@@ -102,11 +87,8 @@ void init_numpy_opencv(py::module m) {
        "get_format_descriptor", &get_format_descriptor,
        R"(cv_type: integer of OpenCV Mat datatype, see https://docs.opencv.org/4.5.4/d1/d1b/group__core__hal__interface.html for full list)",
        py::arg("cv_type"))
-      .def("read_img",
-           [](const std::string &path) {
-             cv::Mat img = cv::imread(path, cv::IMREAD_UNCHANGED);
-             return convert_to_array(img);
-           })
-      .def("thread_kernel_gil_released", thread_kernel_gil_released)
-      .def("thread_kernel_with_gil", thread_kernel_with_gil);
+      .def("read_img", [](const std::string &path) {
+        cv::Mat img = cv::imread(path, cv::IMREAD_UNCHANGED);
+        return convert_to_array(img);
+      });
 }

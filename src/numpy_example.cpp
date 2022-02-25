@@ -5,6 +5,7 @@
 #include "pybind11/numpy.h"
 #include "utils.hpp"
 
+namespace {
 template <typename T>
 class Matrix {
  public:
@@ -34,8 +35,9 @@ class Matrix {
   size_t m_rows, m_cols;
   elemType *m_data;
 };
+}  // namespace
 
-void print_buffer_info(py::buffer b) {
+static void print_buffer_info(py::buffer b) {
   auto info = b.request();
   std::cout << "ptr: " << info.ptr << std::endl;
   std::cout << "item size: " << info.itemsize << std::endl;
@@ -48,12 +50,12 @@ void print_buffer_info(py::buffer b) {
   print_vector(info.strides);
 }
 
-double vectorize_kernel(double x, double y, double z) {
+static double vectorize_kernel(double x, double y, double z) {
   return 3.0 * x + y + 1.24 * z;
 }
 
-py::array_t<double> arr_add_value(const py::array_t<double> &in_arr,
-                                  double v = 1.0) {
+static py::array_t<double> arr_add_value(const py::array_t<double> &in_arr,
+                                         double v = 1.0) {
   auto info = in_arr.request();
   double *out_buff = new double[info.size];
   auto in_ptr = (double *)info.ptr;

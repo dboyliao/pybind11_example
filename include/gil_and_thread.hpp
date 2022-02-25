@@ -3,4 +3,4 @@
 
 namespace py = pybind11;
 
-void init_numpy_example(py::module m);
+void init_gil_threading(py::module m);

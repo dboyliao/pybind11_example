@@ -1,3 +1,4 @@
+#include "gil_and_thread.hpp"
 #include "numpy_example.hpp"
 #include "numpy_opencv.hpp"
 #include "pybind11/pybind11.h"
@@ -13,4 +14,5 @@ PYBIND11_MODULE(pybind11_numpy, m) {
   // initialize modules
   init_numpy_example(m);
   init_numpy_opencv(m);
+  init_gil_threading(m);
 }
