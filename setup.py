@@ -52,6 +52,7 @@ setup(
     name="pybind11_example",
     version="0.0.1",
     packages=find_packages(),
+    install_requires=["numpy"],
     ext_modules=[CMakeExtension("pybind11_numpy", "CMakeLists.txt")],
     package_data={"pybind11_example": ["*.so"]},
     cmdclass={
