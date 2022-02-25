@@ -1,3 +1,10 @@
+# Clone Repo
+
+```bash
+# clone the pybind11 library as well or you have to add pybind11 manually afterward
+$ git clone --recurse-submodules git@github.com:dboyliao/pybind11_example.git
+```
+
 # Requirements
 - OpenCV
 - `cmake`
